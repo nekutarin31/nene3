@@ -11,18 +11,20 @@
   --nav-gap-desktop: 16px;
   --btn-radius: 12px;
   
-  /* カラーパレット */
+/* 落ち着いた淡いパレット */
   --yume-white: #ffffff;
-  --yume-pink: #FFD7F7;
-  --yume-lav: #E8D7FF;
-  --yume-mint: #D7F7FF;
-  --yume-brown: #5C3B34;
-  
-  /* 虹色ヘッダー用 */
-  --r1: #ffd7f7; --r2: #ffe8d7; --r3: #fff3c9; 
-  --r4: #d7f7ff; --r5: #e8d7ff;
-  
-  /* テキスト */
+  --yume-pink:  #f1a4c2; /* ほんのりくすんだピンク */
+  --yume-lav:   #ab9bd6; /* 青みを抑えたラベンダー */
+  --yume-mint:  #92d1df; /* 青すぎないミント */
+  --yume-brown: #5e3624; /* 少し柔らかめのこげ茶 */
+
+   /* 虹色ヘッダー用（全体を淡く） */
+  --r1: #f7d6e3;
+  --r2: #ffe4d3;
+  --r3: #fff4d5;
+  --r4: #d8f3f9;
+  --r5: #e6ddff;
+
   --text-color: var(--yume-brown);
 }
 
