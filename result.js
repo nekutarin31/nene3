@@ -1,7 +1,7 @@
 const titles = [
   "MUSIC","ACTION","INNER CHILD","RELIEVE TENSION","PASSION",
   "OPEN YOUR HEART","TRAVEL","REJUVENATE","SELF AFFIRMATION","WRITE OUT",
-  "CONNECT WITH NATURE","DRAW BOUNDARIES","TRIAL AND ERROR","MOVING FORWARD","EXPRESSING MY FEELINGS",
+  "CONNECT","BOUNDARIES","TRIAL AND ERROR","MOVING FORWARD","EXPRESSING",
   "SPARKLE","ENJOY","LOOK AT","RELUX","HIT",
   "CLEAN UP","CELEBRATION"
 ];
@@ -72,7 +72,7 @@ document.getElementById("otherDetail").textContent = details[idx].other;
 
 // シェアボタンの設定
 const shareX = document.getElementById('shareX');
-const topPageUrl = 'https://nekutarin31.github.io/nene2/';
+const topPageUrl = 'https://nekutarin31.github.io/nene3/';
 const tweetText = 'ワンオラクル タロットで１枚引いてみよう！';
 shareX.href = 
   'https://twitter.com/intent/tweet?' +

@@ -13,9 +13,9 @@
   
 /* 落ち着いた淡いパレット */
   --yume-white: #ffffff;
-  --yume-pink:  #f1a4c2; /* ほんのりくすんだピンク */
-  --yume-lav:   #ab9bd6; /* 青みを抑えたラベンダー */
-  --yume-mint:  #92d1df; /* 青すぎないミント */
+  --yume-pink:  #fddeea; /* ほんのりくすんだピンク */
+  --yume-lav:   #dcd4f3; /* 青みを抑えたラベンダー */
+  --yume-mint:  #cfecf3; /* 青すぎないミント */
   --yume-brown: #5e3624; /* 少し柔らかめのこげ茶 */
 
    /* 虹色ヘッダー用（全体を淡く） */
