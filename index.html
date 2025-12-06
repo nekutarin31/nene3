@@ -5,14 +5,13 @@
   <meta charset="utf-8">
   <title>ワンオラクル</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- Kaisei Opti を読み込む -->
+  <!-- Zen Old Mincho を読み込む -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
-
 </head>
 
 <body>
@@ -53,35 +52,58 @@
       <header>
         <nav>
           <ul>
-            <!-- ① ここを追加 -->
+            <!-- HOME -->
             <li>
-              <a href="#hero">
-                <img src="icons/00.png" alt="トップアイコン">
-                <span>draw</span>
+              <a class="nav-star" href="#hero" aria-label="HOME" data-title="HOME">
+                <!-- inline yellow star -->
+                <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9 6 18.9l1-5.6L3 9.4l5.6-.8L12 2.5z" fill="#FFD700"/>
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9V2.5z" fill="rgba(255,215,0,0.28)"/>
+                </svg>
+                <span>HOME</span>
               </a>
             </li>
-            <!-- ───────────────────────── -->
+
+            <!-- list -->
             <li>
-              <a href="#cards">
-                <img src="icons/01.png" alt="カード一覧">
+              <a class="nav-star" href="#cards" data-title="list">
+                <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9 6 18.9l1-5.6L3 9.4l5.6-.8L12 2.5z" fill="#FFD700"/>
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9V2.5z" fill="rgba(255,215,0,0.28)"/>
+                </svg>
                 <span>list</span>
               </a>
             </li>
+
+            <!-- How to -->
             <li>
-              <a href="#explanation">
-                <img src="icons/02.png" alt="解説">
+              <a class="nav-star" href="#explanation" data-title="How to">
+                <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9 6 18.9l1-5.6L3 9.4l5.6-.8L12 2.5z" fill="#FFD700"/>
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9V2.5z" fill="rgba(255,215,0,0.28)"/>
+                </svg>
                 <span>How to</span>
               </a>
             </li>
+
+            <!-- Q&A -->
             <li>
-              <a href="#qa">
-                <img src="icons/03.png" alt="Q&A">
+              <a class="nav-star" href="#qa" data-title="Q&A">
+                <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9 6 18.9l1-5.6L3 9.4l5.6-.8L12 2.5z" fill="#FFD700"/>
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9V2.5z" fill="rgba(255,215,0,0.28)"/>
+                </svg>
                 <span>Q&A</span>
               </a>
             </li>
+
+            <!-- About -->
             <li>
-              <a href="#about">
-                <img src="icons/04.png" alt="About">
+              <a class="nav-star" href="#about" data-title="About">
+                <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9 6 18.9l1-5.6L3 9.4l5.6-.8L12 2.5z" fill="#FFD700"/>
+                  <path d="M12 2.5l2.5 5.1 5.6.8-4.1 3.9 1 5.6L12 15.9V2.5z" fill="rgba(255,215,0,0.28)"/>
+                </svg>
                 <span>About</span>
               </a>
             </li>
@@ -120,6 +142,8 @@
 
       <!-- カード一覧 -->
       <section id="cards" class="yume-soft-bg">
+        <!-- visible small nav-matching title -->
+        <h3 class="section-nav-title">list</h3>
         <h2>カード一覧</h2>
         <p>カードをタップして詳細を見る</p>
         <div class="grid">
@@ -151,6 +175,7 @@
 
       <!-- 解説セクション -->
       <section id="explanation" class="yume-soft-bg">
+        <h3 class="section-nav-title">How to</h3>
         <div class="divider_block"></div>
         <div class="for_more_detail tarot">
           <h2 class="article_ttl_h1"><span>ワンオラクルのやり方</span></h2>
@@ -254,6 +279,7 @@
 
       <!-- Q&Aセクション -->
       <section id="qa" class="yume-soft-bg">
+        <h3 class="section-nav-title">Q&A</h3>
         <a id="qa_h1"></a>
         <div class="divider_block"></div>
         <div class="for_more_detail tarot">
@@ -298,10 +324,11 @@
 
       <!-- Aboutセクション -->
       <section id="about" class="yume-soft-bg">
+        <h3 class="section-nav-title">About</h3>
         <a id="about_h1"></a>
         <div class="divider_block"></div>
         <div class="for_more_detail tarot">
-          <h1 class="article_ttl_h1"><span>About</span></h1>
+          <h1 class="article_ttl_h1"><span>制作について</span></h1>
           <span class="underline_wide_img"></span>
 
           <!-- 目次 -->

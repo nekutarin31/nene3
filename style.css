@@ -49,8 +49,8 @@ html {
 /* ===== 3. フォント統一（Kaisei Opti） ===== */
 html, body, header, nav, section, article,
 h1, h2, h3, h4, h5, h6,
-p, a, li, button, input, textarea, .btn, .toc-block, .for_more_detail {
-  font-family: "Kaisei Opti", "Hiragino Mincho ProN", "Yu Mincho",
+p, a, li, button, input, textarea, .btn {
+  font-family: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho",
                "Noto Serif JP", serif !important;
   color: var(--text-color);
 }
@@ -203,11 +203,44 @@ header nav ul li a:hover img {
 }
 
 header nav ul li a span {
+  white-space: nowrap;
+  font-size: clamp(12px, 1.6vw, 14px); /* 小画面は12px、大画面は最大14px */
   font-weight: 700;
   color: var(--yume-brown) !important;
   text-shadow:
     0 1px 0 rgba(255,255,255,.85),
     0 0 8px rgba(255,255,255,.55);
+}
+
+/* inline SVG（白い星＋薄い青の影） */
+header nav ul li a svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  /* light-blue soft shadow to improve contrast on pale header */
+  filter: drop-shadow(0 2px 6px rgba(173,216,230,0.35));
+  transition: transform .14s ease, filter .14s ease;
+}
+/* force SVG path to white so inline fills don't matter */
+header nav ul li a svg path {
+  fill: #ffffff !important;
+}
+header nav ul li a:hover svg {
+  transform: translateY(-2px) scale(1.04);
+  filter: drop-shadow(0 6px 14px rgba(173,216,230,0.45));
+}
+
+/* Section small nav-like title styling (ensure centered) */
+.section-nav-title {
+  text-align: center;   /* center-align the small section title */
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--yume-brown);
+  margin: 0.6rem 0 0.4rem;
+  scroll-margin-top: calc(var(--header-height-mobile) + 14px);
+}
+@media (min-width:768px){
+  .section-nav-title { scroll-margin-top: calc(var(--header-height-desktop) + 18px); }
 }
 
 /* ===== 7. セクション共通 ===== */

@@ -1,4 +1,3 @@
-
 @charset "UTF-8";
  /*------------------------
     カスタムプロパティ
@@ -608,247 +607,75 @@ p, a, li, button, input, textarea, .btn {
                "Noto Serif JP", serif !important;
 }
 
-/* シェアボタン内部の整列（画像＋テキストをど真ん中に） */
-.share-btn{
-  display: inline-flex;         /* ボタン内をフレックス化 */
-  align-items: center;          /* 縦中央 */
-  justify-content: center;      /* 横中央 */
-  gap: .5em;                    /* 画像と文字の間隔 */
+/* ★ 全体フォントを Zen Old Mincho に変更（result 用） */
+html, body, header, nav, section, article,
+h1, h2, h3, h4, h5, h6,
+p, a, li, button, input, textarea, .btn {
+  font-family: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho",
+               "Noto Serif JP", serif !important;
 }
 
-/* フッター中央寄せ */
-footer{
-  text-align: center;
-}
-footer p{ margin: 0; }
-
-
-/* ========== Header Nav：丸背景をなくして、イラスト＋文字のみ ========== */
-
-/* a自体の“丸ボタン”化を上書きで解除 */
-header nav ul li a{
-  width: auto !important;
-  height: auto !important;
-  padding: 4px 6px !important;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-
-  /* レイアウトは縦積みのまま（アイコン上、文字下） */
-  display: inline-flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 4px !important;
-  text-decoration: none;
-  transition: transform .2s ease;
-}
-
-/* ホバー時はほんのり持ち上げる（丸枠は出さない） */
-header nav ul li a:hover{
-  transform: translateY(-2px);
-}
-
-/* アイコンを少し大きく・鮮やかに、でも“枠”は付けない */
-header nav ul li a img{
-  filter:
-    drop-shadow(0 3px 8px rgba(231, 22, 144, 0.3))
-    drop-shadow(0 0 6px rgba(255,255,255,.4))
-    saturate(1.2) contrast(1.1);
-}
-
-@media (min-width:768px){
-  header nav ul li a img{ width: 54px; }
-}
-header nav ul li a:hover img{
-  filter: drop-shadow(0 5px 14px rgba(231, 22, 144, 0.3))
-          saturate(1.25) contrast(1.15);
-}
-/* ラベル文字はそのまま使い、視認性だけ上げる */
+/* ナビのラベル折り返し防止＆レスポンシブサイズ */
 header nav ul li a span{
+  white-space: nowrap;
+  font-size: clamp(12px, 1.6vw, 14px);
   font-weight: 700;
-  /* 背景が淡いグラデでも埋もれにくい白系のハイライト */
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.85),
-    0 0 8px rgba(255,255,255,.55);
+  color: var(--yume-brown) !important;
 }
 
-.btn {
-  background: linear-gradient(135deg, #ffd7f7, #e8d7ff, #d7f7ff);
-  color: #5C3B34;
-  border-radius: 50px;
-  padding: 12px 28px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(200,150,255,0.3);
+/* inline SVG star: force white & add light-blue drop-shadow for contrast */
+header nav ul li a svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 6px rgba(173,216,230,0.35));
+  transition: transform .14s ease, filter .14s ease;
+}
+header nav ul li a svg path {
+  fill: #ffffff !important;
+}
+header nav ul li a:hover svg {
+  transform: translateY(-2px) scale(1.04);
+  filter: drop-shadow(0 6px 14px rgba(173,216,230,0.45));
 }
 
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 18px rgba(200,150,255,0.5);
+/* ensure section small title is centered on result as well */
+.section-nav-title {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--yume-brown);
+  margin: 0.6rem 0 0.4rem;
+  scroll-margin-top: calc(var(--header-height-mobile) + 14px);
+}
+@media (min-width:768px){
+  .section-nav-title { scroll-margin-top: calc(var(--header-height-desktop) + 18px); }
 }
 
-
-/* === レイヤー（クリックの邪魔をしない） === */
-.sparkle-layer,
-.cloud-layer{
-  position: fixed; inset: 0;
-  pointer-events: none;       /* ← ボタン操作を邪魔しない */
-  z-index: 5;                 /* 必要なら数値を微調整 */
+/* Make main result image rounded (keeps X icon and advice text unchanged) */
+#cardImg {
+  border-radius: 14px;
+  overflow: hidden;
+  display: block;
+  margin: 0.5em auto;
+  width: 80%;
+  max-width: 300px;
+  height: auto;
 }
 
-/* === ⭐ 星（キラキラ）=== */
-/* 8角スター＋“ポップなアウトライン”を drop-shadow で多重に */
-.sparkle {
-  position: absolute;
-  width: var(--s, 12px); height: var(--s, 12px);
-  /* 星形クリップ（8角スター） */
-  clip-path: polygon(50% 0%, 60% 35%, 100% 50%, 60% 65%, 50% 100%, 40% 65%, 0% 50%, 40% 35%);
-  background: radial-gradient(circle at 50% 45%, #fff 0 40%, rgba(255,255,255,0) 70%);
-  opacity: .95;
-  /* ポップなアウトライン（淡い縁取りを重ねる） */
-  filter:
-    drop-shadow(0 0 2px var(--yume-white))
-    drop-shadow(0 0 4px color-mix(in oklab, var(--yume-pink) 70%, transparent))
-    drop-shadow(0 0 6px color-mix(in oklab, var(--yume-lav) 60%, transparent))
-    drop-shadow(0 0 10px color-mix(in oklab, var(--yume-mint) 55%, transparent));
-  animation: sparkleFloat var(--d, 9s) ease-in-out infinite,
-             sparkleDrift calc(var(--d, 9s) * 1.1) ease-in-out infinite;
-}
-
-/* ふわ上下 */
-@keyframes sparkleFloat {
-  0%,100% { transform: translateY(0) rotate(0deg); }
-  50%     { transform: translateY(-16px) rotate(8deg); }
-}
-/* ゆる横ゆれ */
-@keyframes sparkleDrift {
-  0%,100% { margin-left: 0; }
-  50%     { margin-left: 10px; }
-}
-
-/* 動きを苦手な人の設定（端末の“簡易アニメ”）を尊重 */
-@media (prefers-reduced-motion: reduce){
-  .sparkle{ animation: none; }
-}
-
-/* === ☁️ 雲（SVGもCSSもOK）=== */
-.cloud-puff{
-  position: absolute;
-  opacity: .9;
-  animation: cloudFloat var(--cd, 8s) ease-in-out infinite;
-  filter: drop-shadow(0 5px 10px rgba(242, 103, 255, 0.12));
-}
-@keyframes cloudFloat{
-  0%,100% { transform: translateY(0) }
-  50%     { transform: translateY(-12px) }
-}
-@media (prefers-reduced-motion: reduce){
-  .cloud-puff{ animation: none; }
-}
-
-/* ☁️ 雲の透明・乗算スタイル改良 */
-.cloud-puff {
-  position: absolute;
-  mix-blend-mode: multiply; /* ← 下の色と混ざる（乗算っぽく） */
-  animation: cloudFloat var(--cd, 8s) ease-in-out infinite;
-  pointer-events: none; /* ← クリックできるボタンを邪魔しない */
-  transition: opacity .4s ease;
-}
-
-.cloud-puff svg path {
-  fill: url(#cloudFill);
-  stroke: color-mix(in oklab, var(--yume-lav) 50%, transparent);
-  stroke-width: 1.6;
-  opacity: 0.7;
-}
-
-/* ホバーでちょっと濃くして動きを強調（オプション） */
-.cloud-puff:hover {
-  opacity: 0.55;
-}
-
-/* === ゆめかわ背景（indexと同じ） === */
+/* Make result page background match index (uses same vars as style.css) */
 body {
-  background:#fff
-    var(--yume-white);
-}
-
-/* メインの白帯 */
-.container {
+  line-height: 1.8;
+  letter-spacing: .02em;
   background:
-  radial-gradient(60rem 40rem at -10% -10%, color-mix(in oklab, var(--yume-lav) 22%, #dcdaff) 0 40%, transparent 60%),
-    radial-gradient(50rem 30rem at 110% 10%, color-mix(in oklab, var(--yume-mint) 22%, #fdffe1) 0 35%, transparent 60%),
-    radial-gradient(70rem 50rem at 50% 120%, color-mix(in oklab, var(--yume-pink) 18%, #ffddfc) 0 60%, transparent 65%),
-    var(--yume-white);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(180,130,255,.08);
-}
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(80rem 60rem at 50% 100%, rgba(255,247,255,0.6) 0 30%, transparent 70%);
-  pointer-events: none;
-}
-
-/* さらに薄く＆下の色と自然に混ざる */
-.cloud-puff{
-  opacity: 0.3;              /* ← かなり薄め。0.18〜0.28がおすすめ */
-  mix-blend-mode: multiply;   /* ← 乗算っぽいブレンドで透け感UP */
-  position: absolute;
-  pointer-events: none;
-  /* 左右スライド（外側）＋ふわっと上下（内側 .cloud-body で付与） */
-  animation: cloudSlide var(--slide, 28s) linear infinite alternate;
-  filter: drop-shadow(0 3px 6px rgba(180,130,255,.08)); /* 影も控えめに */
-  transition: opacity .3s ease;
-}
-/* 内側（SVG）が上下にゆらぐ：transformを分けて衝突しないようにするのがポイント */
-.cloud-puff .cloud-body{
-  animation: cloudFloat var(--cd, 18s) ease-in-out infinite;
-}
-
-/* 左右スライド用（外側でX方向だけ） */
-@keyframes cloudSlide{
-  from { transform: translateX(var(--from, -6vw)); }
-  to   { transform: translateX(var(--to,    6vw)); }
-}
-
-/* 既存の上下ゆらぎ（Y方向だけ） */
-@keyframes cloudFloat{
-  0%,100% { transform: translateY(0); }
-  50%     { transform: translateY(-12px); }
-}
-
-
-/* === ゆめかわ背景（全体にふんわり） === */
-body {
-  background:
-    /* やわらかい全体グラデーションベース */
     linear-gradient(160deg,
       color-mix(in oklab, var(--yume-pink) 35%, #fff8ff) 0%,
       color-mix(in oklab, var(--yume-lav) 40%, #f7e5ff) 45%,
       color-mix(in oklab, var(--yume-mint) 30%, #faffef) 100%),
-
-    /* 光の丸をうっすら重ねる */
     radial-gradient(50rem 35rem at 15% 15%, rgba(255,200,255,.4) 0%, transparent 60%),
     radial-gradient(60rem 45rem at 80% 80%, rgba(200,255,255,.35) 0%, transparent 65%),
     var(--yume-white);
-
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-}
-
-/* place decorative layers behind content but above page background */
-.container { position: relative; z-index: 2; } 
-.sparkle-layer, .cloud-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1; /* < container の z-index */
-  overflow: visible;
 }
