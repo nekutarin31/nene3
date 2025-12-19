@@ -61,14 +61,19 @@ const params = new URLSearchParams(location.search);
 let idx = parseInt(params.get("index"), 10);
 if (isNaN(idx) || idx < 0 || idx > 21) idx = Math.floor(Math.random() * 22);
 
-document.getElementById("cardTitle").textContent = `#${idx} ${titles[idx]}`;
-document.getElementById("cardSubTitle").textContent = messages[idx];
-document.getElementById("cardImg").src = `cards/${idx}.png`;
+// カード表示を更新する関数
+function updateCardDisplay() {
+  document.getElementById("cardTitle").textContent = `#${idx} ${titles[idx]}`;
+  document.getElementById("cardSubTitle").textContent = messages[idx];
+  document.getElementById("cardImg").src = `cards/${idx}.png`;
+  document.getElementById("workDetail").textContent = details[idx].work;
+  document.getElementById("relationDetail").textContent = details[idx].relation;
+  document.getElementById("loveDetail").textContent = details[idx].love;
+  document.getElementById("otherDetail").textContent = details[idx].other;
+}
 
-document.getElementById("workDetail").textContent = details[idx].work;
-document.getElementById("relationDetail").textContent = details[idx].relation;
-document.getElementById("loveDetail").textContent = details[idx].love;
-document.getElementById("otherDetail").textContent = details[idx].other;
+// 初期表示
+updateCardDisplay();
 
 // シェアボタンの設定
 const shareX = document.getElementById('shareX');
@@ -82,7 +87,26 @@ shareX.href =
 // ★★★ 演出なしで即座に結果表示 ★★★
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('show-result');
+
+  // 別のカードを引くボタンの処理
+  const rerollBtn = document.getElementById('reroll');
+  rerollBtn.addEventListener('click', () => {
+    idx = Math.floor(Math.random() * 22);
+    updateCardDisplay();
+    window.scrollTo(0, 0); // ページトップにスクロール
+  });
 });
+
+// カード表示を更新する関数
+function updateCardDisplay() {
+  document.getElementById("cardTitle").textContent = `#${idx} ${titles[idx]}`;
+  document.getElementById("cardSubTitle").textContent = messages[idx];
+  document.getElementById("cardImg").src = `cards/${idx}.png`;
+  document.getElementById("workDetail").textContent = details[idx].work;
+  document.getElementById("relationDetail").textContent = details[idx].relation;
+  document.getElementById("loveDetail").textContent = details[idx].love;
+  document.getElementById("otherDetail").textContent = details[idx].other;
+}
 
 // 背景の星・雲アニメーション（そのまま残す）
 (function(){
